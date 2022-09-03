@@ -1,7 +1,8 @@
 import React from "react";
 import './PopUp.css';
+import {PopupType} from "./types";
 
-const Popup = (props:any) => {
+const Popup = (props:PopupType) => {
     return (
         <div className="popup-box">
             <div className="box">

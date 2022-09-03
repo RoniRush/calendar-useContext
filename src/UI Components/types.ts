@@ -1,11 +1,10 @@
-export type ButtonType = {
-    className: string,
-    onClick: ()=>void,
-    disabled: boolean,
-    children: JSX.Element | string,
-}
-
 export type PlaceHolderType = {
     width: string,
     height: string,
+}
+
+export type PopupType = {
+    content: JSX.Element,
+    children?: JSX.Element,
+    handleClose: ()=> void,
 }

@@ -1,7 +1,7 @@
 import React, {useState} from "react";
 import './MeetingCreator.css';
 import {MeetingCreatorProps} from "../propsTypes";
-import {addMeeting, getAllMeetings} from "../../localStorage/storage";
+import {addMeeting, getAllMeetings} from "../../localStorage/meetingAction";
 
 let title: string, time: string, description: string, date: Date;
 

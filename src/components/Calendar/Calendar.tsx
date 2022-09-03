@@ -6,7 +6,7 @@ import './Calendar.css';
 import SlotsCreator from "../SlotsCreator/SlotsCreator";
 import Popup from "../../UI Components/PopUp";
 import MeetingCreator from "../MeetingCreator/MeetingCreator";
-import {getAllMeetings} from "../../localStorage/storage";
+import {getAllMeetings} from "../../localStorage/meetingAction";
 import {AllMeetings} from "../../localStorage/types";
 
 const Calendar = () => {

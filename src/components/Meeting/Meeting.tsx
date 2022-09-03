@@ -5,6 +5,10 @@ import Popup from "../../UI Components/PopUp";
 
 const Meetings = (props: MeetingProps) => {
     const [isOpen, setIsOpen] = useState(false);
+    const [title, setTitle] = useState('');
+    const [time, setTime] = useState('');
+    const [description, setDescription] = useState('');
+    const [date, setDate] = useState('');
 
     const toggleMeetingPopUp = () => {
         setIsOpen(!isOpen);
@@ -15,24 +19,35 @@ const Meetings = (props: MeetingProps) => {
             <div className="meeting">
                 {
                     props.meetings?.map((meeting) => {
-                    return (
-                        <div key={crypto.randomUUID()} onClick={() => toggleMeetingPopUp()}>
-                            <div>
-                                {meeting.title}
-                                {}
+                        return (
+                            <div key={crypto.randomUUID()} onClick={() => {
+                                setTitle(meeting.title);
+                                setDate(meeting.date);
+                                setDescription(meeting.description);
+                                setTime(meeting.time);
+                                toggleMeetingPopUp();
+                            }}>
+                                <div>
+                                    {meeting.title}
+                                </div>
                             </div>
-                            <div>
-                                {isOpen && <Popup
-                                    content={`${meeting.title}\n${meeting.date}\n${meeting.time}\n${meeting.description}\n`}
-                                    handleClose={toggleMeetingPopUp}/>}
-                            </div>
-                        </div>
-                    )
-                })}
+                        )
+                    })}
+            </div>
+            <div>
+                {isOpen && <Popup
+                    content={
+                        <div>
+                            <div>{title}</div>
+                            <div>{date}</div>
+                            <div>{time}</div>
+                            <div>{description}</div>
+                        </div>}
+                    handleClose={toggleMeetingPopUp}/>}
             </div>
         </div>
-
     )
 };
 
 export default Meetings;
+
