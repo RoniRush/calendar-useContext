@@ -49,11 +49,13 @@ const MeetingCreator = (props: MeetingCreatorProps) => {
 };
 
 const handleSaveButtonCLicked = (props: MeetingCreatorProps, date: Date, title: string, time: string, description: string, setHideAlert: any) => {
-    if (isNumberOfMeetingsValid(date)) {
-        props.setMeetings(addMeeting(title, date, time, description))
-        props.togglePopUp();
-    } else {
-        setHideAlert(false);
+    if(title && date && time && description){
+        if (isNumberOfMeetingsValid(date)) {
+            props.setMeetings(addMeeting(title, date, time, description))
+            props.togglePopUp();
+        } else {
+            setHideAlert(false);
+        }
     }
 }
 
