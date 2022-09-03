@@ -17,7 +17,7 @@ const Day = (props: DayProps) => {
                 </div>
             </header>
             <div className="meetingList">
-                <Meeting meetings={props.meetings}/>
+                <Meeting meetings={props.meetings} sesMeetings={props.setMeetings}/>
             </div>
         </div>
     );

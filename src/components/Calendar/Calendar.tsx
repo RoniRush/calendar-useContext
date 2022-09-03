@@ -32,6 +32,7 @@ const Calendar = () => {
                 <TableDaysHeader/>
                 <SlotsCreator days={days}
                               meetings={meetings}
+                              setMeetings={setMeetings}
                 />
             </div>
             <div>

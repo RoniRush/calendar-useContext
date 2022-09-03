@@ -21,6 +21,7 @@ const createDaysElementArr = (props: SlotsProps): JSX.Element[] => {
             key={day.toLocaleDateString()}
             date={day}
             meetings={props.meetings?.[day.toLocaleDateString()]}
+            setMeetings={props.setMeetings}
         />
     ))
 }

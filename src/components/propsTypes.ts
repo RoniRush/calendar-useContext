@@ -3,6 +3,7 @@ import {AllMeetings, MeetingType} from "../localStorage/types";
 export type DayProps = {
     date: Date,
     meetings: MeetingType[],
+    setMeetings: any,
 }
 
 export enum DaysOfWeek {
@@ -17,6 +18,7 @@ export enum DaysOfWeek {
 
 export type MeetingProps = {
     meetings: MeetingType[] | undefined,
+    sesMeetings: any,
 }
 
 export type MeetingCreatorProps = {
@@ -33,10 +35,14 @@ export type CalendarHeaderProps = {
 export type SlotsProps = {
     days: Date[],
     meetings: AllMeetings,
+    setMeetings: any,
 }
 export type MeetingDisplayProps = {
+    id: string,
     title: string,
     date: string,
     description: string,
     time: string,
+    setMeetings: any,
+    togglePopUp: () => void,
 }

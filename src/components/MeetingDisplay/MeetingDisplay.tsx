@@ -1,6 +1,7 @@
 import React from "react";
 import './MeetingDisplay.css'
 import {MeetingDisplayProps} from "../propsTypes";
+import {deleteMeeting} from "../../localStorage/meetingActions";
 
 const MeetingDisplay = (props: MeetingDisplayProps) => {
     return (
@@ -20,6 +21,12 @@ const MeetingDisplay = (props: MeetingDisplayProps) => {
             <div>
                 <label className="labelDescription">Description:</label>
                 <div className="content">{props.description}</div>
+            </div>
+            <div className="cancelDiv">
+                <button onClick={()=>{
+                    props.setMeetings(deleteMeeting(props.id, props.date));
+                    props.togglePopUp();
+                }}>Delete</button>
             </div>
         </div>
     )

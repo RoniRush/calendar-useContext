@@ -1,11 +1,8 @@
-import {AllMeetings} from "./types";
+import {AllMeetings, MeetingType} from "./types";
 
 export const addMeeting = (title: string, date: Date, time: string, description: string): AllMeetings => {
     const stringDate = date.toLocaleDateString();
-    const allMeetings =
-        JSON.parse(localStorage.getItem("allMeetings")!) === null
-            ? {}
-            : JSON.parse(localStorage.getItem("allMeetings")!);
+    const allMeetings = getAllMeetings();
     allMeetings[stringDate] = [
         ...(allMeetings?.[stringDate] || []),
         {title, time, description, id: crypto.randomUUID(), date: stringDate},
@@ -14,6 +11,16 @@ export const addMeeting = (title: string, date: Date, time: string, description:
     localStorage.setItem("allMeetings", toStore);
     return allMeetings;
 };
+
+export const deleteMeeting = (id: string, date: string): AllMeetings => {
+    const allMeetings = getAllMeetings();
+    allMeetings[date] = allMeetings[date].filter((meeting: MeetingType) => {
+        return meeting.id !== id
+    });
+    const toStore = JSON.stringify(allMeetings);
+    localStorage.setItem("allMeetings", toStore);
+    return allMeetings;
+}
 
 export const getAllMeetings = () => {
     return JSON.parse(localStorage.getItem("allMeetings")!) === null

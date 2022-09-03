@@ -4,12 +4,13 @@ import './MeetingsList.css'
 import Popup from "../../UI components/PopUp";
 import MeetingDisplay from "../MeetingDisplay/MeetingDisplay";
 
-const Meetings = (props: MeetingProps) => {
+const MeetingsList = (props: MeetingProps) => {
     const [isOpen, setIsOpen] = useState(false);
     const [title, setTitle] = useState('');
     const [time, setTime] = useState('');
     const [description, setDescription] = useState('');
     const [date, setDate] = useState('');
+    const [id, setId] = useState('')
 
     const toggleMeetingPopUp = () => {
         setIsOpen(!isOpen);
@@ -26,6 +27,7 @@ const Meetings = (props: MeetingProps) => {
                                 setDate(meeting.date);
                                 setDescription(meeting.description);
                                 setTime(meeting.time);
+                                setId(meeting.id);
                                 toggleMeetingPopUp();
                             }}>
                                 <div>
@@ -38,12 +40,12 @@ const Meetings = (props: MeetingProps) => {
             <div>
                 {isOpen && <Popup
                     content={
-                        <MeetingDisplay title={title} date={date} description={description} time={time}/>}
+                        <MeetingDisplay title={title} date={date} description={description} time={time} id={id} togglePopUp={toggleMeetingPopUp} setMeetings={props.sesMeetings}/>}
                     handleClose={toggleMeetingPopUp}/>}
             </div>
         </div>
     )
 };
 
-export default Meetings;
+export default MeetingsList;
 

@@ -1,6 +1,7 @@
 
 label {
     display: inline-block;
+    margin-bottom: 7px;
 }
 
 .labelDescription {
@@ -21,4 +22,11 @@ label {
 
 .content{
     display: inline-block;
+}
+
+.cancelDiv{
+    display: flex;
+    justify-content: flex-end;
+    width: 100%;
+    padding: 0;
 }
