@@ -1,12 +1,14 @@
-import React from "react";
+import React, {useState} from "react";
 import './MeetingCreator.css';
 import {MeetingCreatorProps} from "../propsTypes";
 import {addMeeting, getAllMeetings} from "../../localStorage/storage";
 
+let title: string, time: string, description: string, date: Date;
+
 const MeetingCreator = (props: MeetingCreatorProps) => {
-    let title: string, time: string, description: string, date: Date;
+    const [hideAlert, setHideAlert] = useState(true);
     return (
-        <form>
+        <div>
             <header>
                 <input
                     type="date"
@@ -35,19 +37,27 @@ const MeetingCreator = (props: MeetingCreatorProps) => {
                     onChange={(newVal) => description = newVal.target.value}
                 />
             </div>
-            <footer>
+            <div>
                 <button onClick={() => {
-                    if (isNumberOfMeetingsValid(date)) {
-                        props.setMeetings(addMeeting(title, date, time, description))
-                    }
-                }}>Save
+                    handleSaveButtonCLicked(props, date, title, time, description, setHideAlert)
+                }}>Submit
                 </button>
-            </footer>
-        </form>
+                <label hidden={hideAlert} style={{color: "red"}}> 5 meetings at most are allowed</label>
+            </div>
+        </div>
     )
 };
 
-const isNumberOfMeetingsValid = (date: Date) : boolean => {
+const handleSaveButtonCLicked = (props: MeetingCreatorProps, date: Date, title: string, time: string, description: string, setHideAlert: any) => {
+    if (isNumberOfMeetingsValid(date)) {
+        props.setMeetings(addMeeting(title, date, time, description))
+        props.togglePopUp();
+    } else {
+        setHideAlert(false);
+    }
+}
+
+const isNumberOfMeetingsValid = (date: Date): boolean => {
     const allMeetings = getAllMeetings();
     const stringDate = date.toLocaleDateString();
     return allMeetings[stringDate]?.length < 5 || allMeetings[stringDate] === undefined;

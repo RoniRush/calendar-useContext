@@ -33,7 +33,7 @@ const Calendar = () => {
             </div>
             <div>
                 {isOpen && <Popup
-                    content={<MeetingCreator setMeetings={setMeetings}/>}
+                    content={<MeetingCreator setMeetings={setMeetings} togglePopUp={toggleAddMeetingPopUp}/>}
                     handleClose={toggleAddMeetingPopUp}/>}
             </div>
         </div>

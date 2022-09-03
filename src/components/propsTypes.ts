@@ -21,6 +21,7 @@ export type MeetingProps = {
 
 export type MeetingCreatorProps = {
     setMeetings: any,
+    togglePopUp: () => void,
 }
 
 export type CalendarHeaderProps = {
