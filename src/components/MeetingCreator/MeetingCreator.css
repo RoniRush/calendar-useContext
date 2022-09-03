@@ -1,0 +1,39 @@
+input {
+    margin-bottom: 10px;
+    //margin-left: 72px;
+}
+
+.dateInput{
+    margin-left: 75px;
+}
+
+.timeInput{
+    margin-left: 74px;
+}
+
+.titleInput{
+    margin-left: 78px;
+}
+
+label {
+    font-size: 20px;
+}
+
+.descriptionItem{
+    margin-bottom: 10px;
+}
+
+.descriptionInput{
+    margin-left: 20px;
+}
+
+.submitDiv {
+    display: flex;
+    justify-content: flex-end;
+    width: 100%;
+    padding: 0;
+}
+
+.submitButton {
+    margin-left: 10px;
+}

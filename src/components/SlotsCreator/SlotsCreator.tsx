@@ -1,7 +1,7 @@
 import React from "react";
 import Day from "../Day/Day";
 import {SlotsProps} from "../propsTypes";
-import PlaceHolder from "../../UI Components/PlaceHolder";
+import PlaceHolder from "../../UI components/PlaceHolder";
 
 const createPlaceHolderElementArr = (numberOsCells: number): JSX.Element[]=> {
     let arr = [];
@@ -34,7 +34,7 @@ const SlotsCreator = (props: SlotsProps) => {
     const placeHolderNumOfDays = props.days[0].getDay();
     return (
         <div className="calendar">
-            <div className="parent">
+            <div className="slots">
                 {createSlotsElementArr(placeHolderNumOfDays, props)}
             </div>
         </div>

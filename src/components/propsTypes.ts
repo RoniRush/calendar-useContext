@@ -34,3 +34,9 @@ export type SlotsProps = {
     days: Date[],
     meetings: AllMeetings,
 }
+export type MeetingDisplayProps = {
+    title: string,
+    date: string,
+    description: string,
+    time: string,
+}

@@ -4,9 +4,9 @@ import CalendarHeader from "../Header/CalendarHeader";
 import {generateDates} from "./helpers/generateDates";
 import './Calendar.css';
 import SlotsCreator from "../SlotsCreator/SlotsCreator";
-import Popup from "../../UI Components/PopUp";
+import Popup from "../../UI components/PopUp";
 import MeetingCreator from "../MeetingCreator/MeetingCreator";
-import {getAllMeetings} from "../../localStorage/meetingAction";
+import {getAllMeetings} from "../../localStorage/meetingActions";
 import {AllMeetings} from "../../localStorage/types";
 
 const Calendar = () => {
@@ -20,12 +20,15 @@ const Calendar = () => {
     };
 
     return (
-        <div>
-            <div>
-                <button onClick={() => {
-                    toggleAddMeetingPopUp();
-                }}>add meeting</button>
-                <CalendarHeader date={date} setDate={setDate} setDays={setDays}/>
+        <div className="calendarAndPupUp">
+            <div className="calendar">
+                <header className="mainHeader">
+                    <button className="addMeetingButton" onClick={() => {
+                        toggleAddMeetingPopUp();
+                    }}>Add Meeting
+                    </button>
+                    <CalendarHeader date={date} setDate={setDate} setDays={setDays}/>
+                </header>
                 <TableDaysHeader/>
                 <SlotsCreator days={days}
                               meetings={meetings}
@@ -41,3 +44,8 @@ const Calendar = () => {
 }
 
 export default Calendar;
+
+//
+// <button className="addMeetingButton" onClick={() => {
+//     toggleAddMeetingPopUp();
+// }}>Add MeetingsList</button>

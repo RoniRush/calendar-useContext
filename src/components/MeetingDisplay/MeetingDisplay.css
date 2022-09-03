@@ -1,0 +1,24 @@
+
+label {
+    display: inline-block;
+}
+
+.labelDescription {
+    padding-right: 20px;
+}
+
+.labelTitle {
+    padding-right: 79px;
+}
+
+.labelTime {
+    padding-right: 72px;
+}
+
+.labelDate {
+    padding-right: 76px;
+}
+
+.content{
+    display: inline-block;
+}

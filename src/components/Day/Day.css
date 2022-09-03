@@ -4,7 +4,6 @@
     overflow: hidden;
     outline-style: solid;
     outline-color: #282c34;
-    padding-top: 10px;
 }
 
 .day header {
@@ -14,11 +13,21 @@
 }
 
 .dayNumber {
-    text-align: Left;
     display: inline-block;
-    padding-right: 10px;
+    font-size: 18px;
+    font-weight: bold;
+    height: 25px;
+    width: 25px;
+    text-align: center;
+    padding-top: 2px;
 }
 
 .addMeeting {
     display: inline-block;
 }
+
+/*.meetingList {*/
+/*    //margin: 5px 0 0 5px;*/
+/*    //padding-left: 5px;*/
+/*    //width:100%;*/
+/*}*/

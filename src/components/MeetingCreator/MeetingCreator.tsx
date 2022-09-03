@@ -1,55 +1,54 @@
 import React, {useState} from "react";
 import './MeetingCreator.css';
 import {MeetingCreatorProps} from "../propsTypes";
-import {addMeeting, getAllMeetings} from "../../localStorage/meetingAction";
+import {addMeeting, getAllMeetings} from "../../localStorage/meetingActions";
 
 let title: string, time: string, description: string, date: Date;
 
 const MeetingCreator = (props: MeetingCreatorProps) => {
     const [hideAlert, setHideAlert] = useState(true);
     return (
-        <div>
-            <header>
-                <input
+        <div className="meetingCreator">
+            <div>
+                <label className="dateLabel">Date </label>
+                <input className="dateInput"
                     type="date"
                     onChange={(newVal) => date = new Date(newVal.target.value)}
                 />
-            </header>
-            <div className="formItem">
-                <label>Title </label>
-                <input
+            </div>
+            <div className="titleItem">
+                <label className="titleLabel">Title </label>
+                <input className="titleInput"
                     type="text"
                     onChange={(newVal) => title = newVal.target.value}
                 />
             </div>
             <div className="time-range-picker">
-                <div className="formItem">
-                    <label>Time</label>
-                    <input
-                        type="time"
-                        onChange={(newVal) => time = newVal.target.value}
-                    />
-                </div>
+                <label className="timeLabel">Time</label>
+                <input className="timeInput"
+                    type="time"
+                    onChange={(newVal) => time = newVal.target.value}
+                />
             </div>
-            <div className="formItem">
-                <label>Description </label>
-                <textarea
+            <div className="descriptionItem">
+                <label className="descriptionLabel">Description </label>
+                <textarea className="descriptionInput"
                     onChange={(newVal) => description = newVal.target.value}
                 />
             </div>
-            <div>
-                <button onClick={() => {
+            <div className="submitDiv">
+                <div hidden={hideAlert} style={{color: "red"}}> 5 meetings at most are allowed</div>
+                <button className="submitButton" onClick={() => {
                     handleSaveButtonCLicked(props, date, title, time, description, setHideAlert)
                 }}>Submit
                 </button>
-                <label hidden={hideAlert} style={{color: "red"}}> 5 meetings at most are allowed</label>
             </div>
         </div>
     )
 };
 
 const handleSaveButtonCLicked = (props: MeetingCreatorProps, date: Date, title: string, time: string, description: string, setHideAlert: any) => {
-    if(title && date && time && description){
+    if (title && date && time && description) {
         if (isNumberOfMeetingsValid(date)) {
             props.setMeetings(addMeeting(title, date, time, description))
             props.togglePopUp();

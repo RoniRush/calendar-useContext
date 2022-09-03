@@ -8,3 +8,6 @@ to run the project:
 ### `npm start`
 
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+
+##Known Issues:
+1. There isn't any input limitation (e.g. user can enter a meeting with too long title)

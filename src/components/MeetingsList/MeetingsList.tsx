@@ -1,7 +1,8 @@
 import {MeetingProps} from "../propsTypes";
 import React, {useState} from "react";
-import './Meeting.css'
-import Popup from "../../UI Components/PopUp";
+import './MeetingsList.css'
+import Popup from "../../UI components/PopUp";
+import MeetingDisplay from "../MeetingDisplay/MeetingDisplay";
 
 const Meetings = (props: MeetingProps) => {
     const [isOpen, setIsOpen] = useState(false);
@@ -16,11 +17,11 @@ const Meetings = (props: MeetingProps) => {
 
     return (
         <div>
-            <div className="meeting">
+            <div className="meetings">
                 {
                     props.meetings?.map((meeting) => {
                         return (
-                            <div key={crypto.randomUUID()} onClick={() => {
+                            <div className="meeting" key={crypto.randomUUID()} onClick={() => {
                                 setTitle(meeting.title);
                                 setDate(meeting.date);
                                 setDescription(meeting.description);
@@ -37,12 +38,7 @@ const Meetings = (props: MeetingProps) => {
             <div>
                 {isOpen && <Popup
                     content={
-                        <div>
-                            <div>{title}</div>
-                            <div>{date}</div>
-                            <div>{time}</div>
-                            <div>{description}</div>
-                        </div>}
+                        <MeetingDisplay title={title} date={date} description={description} time={time}/>}
                     handleClose={toggleMeetingPopUp}/>}
             </div>
         </div>
