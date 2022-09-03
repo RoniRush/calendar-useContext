@@ -1,0 +1,24 @@
+.day {
+    width: auto;
+    height: 150px;
+    overflow: hidden;
+    outline-style: solid;
+    outline-color: #282c34;
+    padding-top: 10px;
+}
+
+.day header {
+    margin: 5px 0 0 5px;
+    padding-left: 5px;
+    width:100%;
+}
+
+.dayNumber {
+    text-align: Left;
+    display: inline-block;
+    padding-right: 10px;
+}
+
+.addMeeting {
+    display: inline-block;
+}

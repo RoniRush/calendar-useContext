@@ -1,0 +1,10 @@
+.header {
+    font-size: 30px;
+    font-family: Arial, serif;
+    text-align: center;
+    padding-top: 20px;
+}
+
+.currentMonth {
+    display: inline-block;
+}
