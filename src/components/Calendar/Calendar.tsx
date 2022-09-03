@@ -44,8 +44,3 @@ const Calendar = () => {
 }
 
 export default Calendar;
-
-//
-// <button className="addMeetingButton" onClick={() => {
-//     toggleAddMeetingPopUp();
-// }}>Add MeetingsList</button>
