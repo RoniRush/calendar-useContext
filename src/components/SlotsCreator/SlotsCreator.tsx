@@ -1,7 +1,9 @@
-import React from "react";
+import React, {useContext} from "react";
 import Day from "../Day/Day";
 import {SlotsProps} from "../propsTypes";
 import PlaceHolder from "../../UI components/PlaceHolder";
+import MeetingsContext from "../../Context/MeetingsContext";
+import DaysContext from "../../Context/DaysContext";
 
 const createPlaceHolderElementArr = (numberOsCells: number): JSX.Element[]=> {
     let arr = [];
@@ -31,12 +33,17 @@ const createSlotsElementArr = (placeHolderNumOfDays: number, props: SlotsProps):
         ...createDaysElementArr(props)]
 }
 
-const SlotsCreator = (props: SlotsProps) => {
-    const placeHolderNumOfDays = props.days[0].getDay();
+const SlotsCreator = () => {
+    // @ts-ignore
+    const {meetings, setMeetings} = useContext(MeetingsContext);
+    // @ts-ignore
+    const {days} = useContext(DaysContext);
+
+    const placeHolderNumOfDays = days[0].getDay();
     return (
         <div className="calendar">
             <div className="slots">
-                {createSlotsElementArr(placeHolderNumOfDays, props)}
+                {createSlotsElementArr(placeHolderNumOfDays, {meetings, setMeetings, days})}
             </div>
         </div>
     );

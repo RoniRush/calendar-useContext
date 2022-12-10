@@ -1,10 +1,13 @@
-import React, {useState} from "react";
+import React, {useContext, useState} from "react";
 import './MeetingCreator.css';
 import {MeetingCreatorProps} from "../propsTypes";
 import {addMeeting} from "../../localStorage/meetingActions";
 import {isNumberOfMeetingsValid} from "./validation";
+import MeetingsContext from "../../Context/MeetingsContext";
 
 const MeetingCreator = (props: MeetingCreatorProps) => {
+    // @ts-ignore
+    const {setMeetings} = useContext(MeetingsContext);
     const [hideAlert, setHideAlert] = useState(true);
     const [date, setDate] = useState(new Date());
     const [title, setTitle] = useState('');
@@ -54,7 +57,7 @@ const MeetingCreator = (props: MeetingCreatorProps) => {
             <div className="submitDiv">
                 <div hidden={hideAlert} style={{color: "red"}}> 5 meetings at most are allowed</div>
                 <button className="submitButton" onClick={() => {
-                    handleSaveButtonCLicked(props, date, title, time, description, setHideAlert);
+                    handleSaveButtonCLicked(props, date, title, time, description, setHideAlert, setMeetings);
                     resetValues();
                 }}>Submit
                 </button>
@@ -63,10 +66,10 @@ const MeetingCreator = (props: MeetingCreatorProps) => {
     )
 };
 
-const handleSaveButtonCLicked = (props: MeetingCreatorProps, date: Date, title: string, time: string, description: string, setHideAlert: any) => {
+const handleSaveButtonCLicked = (props: MeetingCreatorProps, date: Date, title: string, time: string, description: string, setHideAlert: any, setMeetings: any) => {
     if (title && date && time && description) {
         if (isNumberOfMeetingsValid(date)) {
-            props.setMeetings(addMeeting(title, date, time, description))
+            setMeetings(addMeeting(title, date, time, description))
             props.togglePopUp();
         } else {
             setHideAlert(false);
